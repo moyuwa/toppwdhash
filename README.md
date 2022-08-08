@@ -15,15 +15,15 @@
 修改 config1.py 内参数 配置字典与哈希数据库
 
 查询单个哈希 py -3 main.py -s e10adc3949ba59abbe56e057f20f883e
-查询多个哈希 py -3 main.py -l test.txt**
+查询多个哈希 py -3 main.py -l test.txt
 查询密码是否在库中 py -3 main.py -p 123456
-模糊查询单个哈希值 py -3 main.py -k a59abb**
+模糊查询单个哈希值 py -3 main.py -k a59abb
 生成指定密码的哈希值 py -3 main.py -g 12345667890
 ``````
 
 
 
-# 思路
+# 支持类型选择
 
 参考 www.cmd5.com 无加盐情况，有以下哈希方式
 
