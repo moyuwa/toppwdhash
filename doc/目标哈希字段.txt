@@ -1,0 +1,22 @@
+参考 www.cmd5.com 无加盐情况，有以下哈希方式
+
+password: 123456
+
+md5: e10adc3949ba59abbe56e057f20f883e
+md5(md5($pass)): 14e1b600b1fd579f47433b88e8d85291
+md5(md5(md5($pass))): c56d0e9a7ccec67b4ea131655038d604
+
+mysql: 565491d704013245
+mysql5: 6bb4837eb74329105ee4568dda7dc67ed2ca2ad9
+ntlm: 32ed87bdb5fdc5e9cba88547376818d4
+
+sha1: 7c4a8d09ca3762af61e59520943dc26494f8941b
+sha1(sha1($psss)): 69c5fcebaa65b560eaf06c3fbeb481ae44b8d618
+sha1(md5($psss)): 10470c3b4b1fed12c3baac014be15fac67c6e815
+
+md5(sha1($psss)): d93a5def7511da3d0f2d171d9c344e91
+md5(base64): 87d9bb400c0634691f0e3baaf1e2fd0d
+md5_middle：49ba59abbe56e057
+
+未加入 md5(unicode) 在python3不好实现，使用频率不大，不研究了
+未加入 sha256、sha256(md5($pass))、sha384、sha512 长度不同很明显，且使用频率不大
