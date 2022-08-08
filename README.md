@@ -25,7 +25,7 @@
 
 # 支持类型选择
 
-参考 www.cmd5.com 无加盐情况，有以下哈希方式
+参考 www.cmd5.com 无加盐情况，有以下哈希方式，均与网站计算结果一样
 
 password: 123456
 
@@ -49,7 +49,7 @@ sha1(md5($psss)): 10470c3b4b1fed12c3baac014be15fac67c6e815
 
 md5(sha1($psss)): d93a5def7511da3d0f2d171d9c344e91
 
-md5(base64): 87d9bb400c0634691f0e3baaf1e2fd0d
+md5(base64($psss)): 87d9bb400c0634691f0e3baaf1e2fd0d *这里与md5不一样，先bsae64再md5计算方式*
 
 md5_middle：49ba59abbe56e057
 
@@ -59,6 +59,8 @@ md5_middle：49ba59abbe56e057
 
 未加入 sha256、sha256(md5($pass))、sha384、sha512 长度不同很明显，且使用频率不大
 
+未加入 base64(md5($psss)) 奇怪的方式，个人认为使用频率不大，实际更可能是 base64(aes($psss)) 、 base64(des($psss)) 等方式
+
 # 使用方式
 
 **直接修改config1.py文件，可替换字典和哈希数据库**，修改后运行会自动生成哈希数据库
@@ -67,7 +69,7 @@ md5_middle：49ba59abbe56e057
 
 ![config1](doc/config1.png)
 
-读取文件查询多个哈希
+读取文件查询多个哈希，如果密码不对，可能是末尾有空格
 
 ![file123456](doc/file123456.png)
 
