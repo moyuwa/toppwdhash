@@ -2,6 +2,10 @@
 
 一款常见密码哈希离线查询工具，包含算法类型 ：  'md5', 'md5x2', 'md5x3', 'sha1', 'ntlm', 'mysql', 'mysql5',  'md5_sha1', 'sha1_sha1', 'sha1_md5', 'md5_base64', 'md5_middle'；支持单个查询、批量查询、模糊查询、明文密码哈希生成等，后续可能加入更多功能。
 
+即将加入的算法：base64(md5($psss))、sm3
+
+考虑加入的算法：sha256、sha256(md5($pass))、md5(sha256($pass))
+
 # 介绍
 
 
