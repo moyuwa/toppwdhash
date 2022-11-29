@@ -5,6 +5,7 @@
 
 import hashlib, binascii, sqlite3, base64
 import config1
+from gmssl import sm3, func
 
 """
 各种哈希算法
@@ -73,6 +74,12 @@ def pwdmd5_middle(password, encode='utf-8'):
     return m16
 
 
+def pwdsm3(password, encode='utf-8'):
+    # 数据和加密后数据为bytes类型
+    m = sm3.sm3_hash(func.bytes_to_list(password.encode(encoding=encode)))
+    return m
+
+
 def pwdhashdata(password, encode='utf-8'):
     """
     算法调用、组合 生成密码哈希字典，字段有更改时这里也需要改
@@ -92,6 +99,10 @@ def pwdhashdata(password, encode='utf-8'):
     ph['sha1_md5'] = pwdsha1(pwdmd5(password, encode1), encode1)
     ph['md5_base64'] = pwdmd5(pwdbase64(password, encode1), encode1)
     ph['md5_middle'] = pwdmd5_middle(password, encode1)
+    ph['base64_md5'] = pwdbase64(pwdmd5(password, encode1), encode1)
+    ph['md5_sha256'] = pwdmd5(pwdsha256(password, encode1), encode1)
+    ph['sha256'] = pwdsha256(password, encode1)
+    ph['sm3'] = pwdsm3(password, encode1)
     return ph
 
 
@@ -138,7 +149,10 @@ def pwdsqlite3(path):
             v = (ph['password'], ph['md5'], ph['md5x2'], ph['md5x3'],
                  ph['sha1'], ph['ntlm'], ph['mysql'], ph['mysql5'],
                  ph['md5_sha1'], ph['sha1_sha1'], ph['sha1_md5'], ph['md5_base64'],
-                 ph['md5_middle'], 0)
+                 ph['md5_middle'],
+                 ph['base64_md5'], ph['md5_sha256'], ph['sha256'],
+                 ph['sm3'],
+                 0)
             cur.execute(qy, v)  # 插入新添的数据
 
     conn.commit()

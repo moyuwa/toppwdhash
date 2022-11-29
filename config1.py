@@ -11,7 +11,11 @@ db_name = 'pwdtop7w.db'
 # 数据库表名
 table = 'pwdhash'
 # 数据库字段，代码里末尾添加查询次数统计字段，顺序不能变，添加或删除字段后需要重新生成数据库
-hashlist = ['password', 'md5', 'md5x2', 'md5x3',
-            'sha1', 'ntlm', 'mysql', 'mysql5',
-            'md5_sha1', 'sha1_sha1', 'sha1_md5', 'md5_base64',
-            'md5_middle']
+hashlist = [
+    'password', 'md5', 'md5x2', 'md5x3',
+    'sha1', 'ntlm', 'mysql', 'mysql5',
+    'md5_sha1', 'sha1_sha1', 'sha1_md5', 'md5_base64',
+    'md5_middle',
+    'base64_md5', 'md5_sha256', 'sha256',
+    'sm3'
+]

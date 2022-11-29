@@ -13,8 +13,12 @@ import argparse
 helptext = """
 常见密码哈希离线查询工具 python version 3.7 by 6time 
 包含算法类型 
-        'md5', 'md5x2', 'md5x3', 'sha1', 'ntlm', 'mysql', 'mysql5',
-        'md5_sha1', 'sha1_sha1', 'sha1_md5', 'md5_base64', 'md5_middle'
+    'password', 'md5', 'md5x2', 'md5x3',
+    'sha1', 'ntlm', 'mysql', 'mysql5',
+    'md5_sha1', 'sha1_sha1', 'sha1_md5', 'md5_base64',
+    'md5_middle',
+    'base64_md5', 'md5_sha256', 'sha256',
+    'sm3'
         
 修改 config1.py 内参数 配置字典与哈希数据库
 
@@ -31,6 +35,7 @@ print(helptext)
 parser = argparse.ArgumentParser(description='')
 parser.add_argument('-s', '--string', type=str, default=None, help='-s e10adc3949ba59abbe56e057f20f883e')
 parser.add_argument('-l', '--list-file', type=str, default=None, help='-l hash.txt')
+# parser.add_argument('-et', '--entype', type=str, default=None, help='-et md5x2') //指定哈希类型查询多个哈希 py -3 main.py -l test.txt -et md5
 parser.add_argument('-p', '--password', type=str, default=None, help='-p 123456')
 parser.add_argument('-k', '--like', type=str, default=None, help='-k a59abb')
 parser.add_argument('-g', '--generate', type=str, default=None, help='-g 123456')
