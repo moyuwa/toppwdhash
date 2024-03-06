@@ -1,13 +1,11 @@
 #!/usr/bin/env python3
 # coding=utf-8
 # python version 3.7 by 6time
-# fixed by b3nguang
 # 生成密码的各种哈希
 
 import hashlib, binascii, sqlite3, base64
 import config1
 from gmssl import sm3, func
-from Crypto.Hash import MD4
 
 """
 各种哈希算法
@@ -39,10 +37,10 @@ def pwdsha256(password, encode='utf-8'):
 
 
 def pwdntlm(password, encode='utf-8'):
-    md4 = MD4.new()
-    md4.update(password.encode(encoding=encode))
-    return md4.hexdigest()
-
+    # n = hashlib.new('md4', text.encode('utf-16le'))
+    n = hashlib.new('md4')
+    n.update(password.encode('utf-16le'))
+    return binascii.hexlify(n.digest()).decode()
 
 
 def pwdmysql(password, encode='utf-8'):
